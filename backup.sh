@@ -17,7 +17,7 @@ fi
 # Source files
 if [ -n "$3" ]; then 
     if [ -n "$HOST" ]; then 
-        SRC=${HOST}:${SRC}
+        SRC=${HOST}:$3
     else 
         SRC=$3         
     fi    
