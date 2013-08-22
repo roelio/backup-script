@@ -55,7 +55,6 @@ if [ -n "$7" -a -n "$8" ]; then
     fi;
 fi
 
-
 # Standard variables
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )" 
 DST="$BACKUP_REPO$BACKUP_NAME"
@@ -80,11 +79,14 @@ fi
 if [ ! -d "$DST/Monthly" ]; then
     mkdir $DST/Monthly
 fi
-
-if [ ! -d "$DST/incomplete" ]; then
+if [  -d "$DST/incomplete" ]; then
     rm -rf $DST/incomplete
 fi
 
+# Create empty exclusion file if it not exists
+if [ ! -f "$EXCLUDE" ] ; then
+    touch $EXCLUDE
+fi
 
 # Monthly full backup
 if [ $DOM = "01" ]; then
